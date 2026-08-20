@@ -29,14 +29,15 @@ public class GerenciadorJogadores {
         jogador.setNome(nome);
         jogador.setPosicao(posicao);
         jogador.setSalario(salario);
-        jogador.setTimeId(timeId);
 
-        jogadores.add(jogador);
+        if (time.adicionarJogador(jogador)) {
+            jogadores.add(jogador);
 
-        System.out.println(
-                "Jogador cadastrado: " +
-                        nome + " -> " + time.getNome()
-        );
+            System.out.println(
+                    "Jogador cadastrado: " +
+                            nome + " -> " + time.getNome()
+            );
+        }
     }
 
     public void transferirJogador(int jogadorId,

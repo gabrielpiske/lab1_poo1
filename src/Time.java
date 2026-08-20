@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Time {
 
     private int id;
@@ -5,15 +8,98 @@ public class Time {
     private String cidade;
     private int capacidade;
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    private List<Jogador> jogadores;
 
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
+    public Time() {
+        jogadores = new ArrayList<>();
+    }
 
-    public String getCidade() { return cidade; }
-    public void setCidade(String cidade) { this.cidade = cidade; }
+    public int getId() {
+        return id;
+    }
 
-    public int getCapacidade() { return capacidade; }
-    public void setCapacidade(int capacidade) { this.capacidade = capacidade; }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public int getCapacidade() {
+        return capacidade;
+    }
+
+    public void setCapacidade(int capacidade) {
+        if (capacidade <= 0) {
+            throw new IllegalArgumentException(
+                    "A capacidade deve ser maior que zero."
+            );
+        }
+
+        this.capacidade = capacidade;
+    }
+
+    public List<Jogador> getJogadores() {
+        return jogadores;
+    }
+
+    public boolean adicionarJogador(Jogador jogador) {
+
+        if (jogador == null) {
+            return false;
+        }
+
+        if (jogadores.size() >= capacidade) {
+            System.out.println(
+                    "O time " + nome + " atingiu sua capacidade."
+            );
+            return false;
+        }
+
+        jogadores.add(jogador);
+        jogador.setTimeId(id);
+
+        return true;
+    }
+
+    public boolean removerJogador(Jogador jogador) {
+
+        if (jogador == null) {
+            return false;
+        }
+
+        return jogadores.remove(jogador);
+    }
+
+    public boolean estaLotado() {
+        return jogadores.size() >= capacidade;
+    }
+
+    public int getQuantidadeJogadores() {
+        return jogadores.size();
+    }
+
+    public double calcularFolhaSalarial() {
+
+        double total = 0;
+
+        for (Jogador jogador : jogadores) {
+            total += jogador.getSalario();
+        }
+
+        return total;
+    }
 }
