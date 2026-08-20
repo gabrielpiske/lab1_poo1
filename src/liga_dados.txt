@@ -1,0 +1,7 @@
+Liga: Liga Brasileira de Demonstracao
+Times: 3
+Jogadores: 3
+Partidas: 3
+  Flamengo | Folha: R$200000.0
+  Palmeiras | Folha: R$580000.0
+  Gremio | Folha: R$0.0
