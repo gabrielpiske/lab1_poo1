@@ -17,6 +17,7 @@ public class Liga {
     private GerenciadorJogadores gerenciadorJogadores;
     private GerenciadorPartidas gerenciadorPartidas;
     private GerenciadorEstatisticas gerenciadorEstatisticas;
+    private GerenciadorClassificacao gerenciadorClassificacao;
 
     public Liga(String nome) {
         this.nome = nome;
@@ -29,6 +30,8 @@ public class Liga {
         this.gerenciadorPartidas = new GerenciadorPartidas(times, partidas);
         this.gerenciadorEstatisticas =
                 new GerenciadorEstatisticas(times, jogadores);
+        this.gerenciadorClassificacao =
+                new GerenciadorClassificacao(times);
     }
 
     public void cadastrarTime(String nome, String cidade, int capacidade) {
@@ -63,15 +66,7 @@ public class Liga {
     }
 
     public void gerarClassificacao() {
-        System.out.println("\n=== Classificacao (ordem de cadastro) ===");
-
-        for (int i = 0; i < times.size(); i++) {
-            System.out.println(
-                    (i + 1) + ". " +
-                            times.get(i).getNome() +
-                            " (" + times.get(i).getCidade() + ")"
-            );
-        }
+        gerenciadorClassificacao.gerarClassificacao();
     }
 
     public Jogador buscarJogador(int id) {

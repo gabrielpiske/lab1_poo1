@@ -65,7 +65,7 @@ public class GerenciadorJogadores {
             return;
         }
 
-        jogador.setTimeId(timeDestinoId);
+        jogador.transferirPara(timeDestinoId);
 
         System.out.println(
                 "Transferencia realizada: jogador " +
